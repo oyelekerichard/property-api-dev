@@ -7,28 +7,42 @@ package com.liveizy.propertyapi.models;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author richard.oyeleke
  */
-public class LpmCommisionPaymentDates implements Serializable
-{
-   private Integer id;
-   private String firstMonth;
-   private String secondMonth;
-   private String thirdMonth;
-   private String fourthMonth;
-   private String fifthMonth;
-   private String sixthMonth;
-   private String seventhMonth;
-   private String eightMonth;
-   private String ninthMonth;
-   private String tenthMonth;
-   private String eleventhMonth;
-   private String twelfthMonth;
-   private Date dateCreated;
-   private Date dateUpdated;
+@Entity
+@Table(name = "lpm_commission_payment_dates")
+public class LpmCommisionPaymentDates implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
+    private String firstMonth;
+    private String secondMonth;
+    private String thirdMonth;
+    private String fourthMonth;
+    private String fifthMonth;
+    private String sixthMonth;
+    private String seventhMonth;
+    private String eightMonth;
+    private String ninthMonth;
+    private String tenthMonth;
+    private String eleventhMonth;
+    private String twelfthMonth;
+    private Date dateCreated;
+    private Date dateUpdated;
 
     public LpmCommisionPaymentDates() {
     }
@@ -175,5 +189,5 @@ public class LpmCommisionPaymentDates implements Serializable
     public String toString() {
         return "LpmCommisionPaymentDates{" + "id=" + id + ", firstMonth=" + firstMonth + ", secondMonth=" + secondMonth + ", thirdMonth=" + thirdMonth + ", fourthMonth=" + fourthMonth + ", fifthMonth=" + fifthMonth + ", sixthMonth=" + sixthMonth + ", seventhMonth=" + seventhMonth + ", eightMonth=" + eightMonth + ", ninthMonth=" + ninthMonth + ", tenthMonth=" + tenthMonth + ", eleventhMonth=" + eleventhMonth + ", twelfthMonth=" + twelfthMonth + ", dateCreated=" + dateCreated + ", dateUpdated=" + dateUpdated + '}';
     }
-           
+
 }

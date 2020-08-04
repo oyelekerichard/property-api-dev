@@ -7,24 +7,37 @@ package com.liveizy.propertyapi.models;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author richard.oyeleke
  */
+@Entity
+@Table(name = "landlord_agents")
+public class LandlordAgents implements Serializable {
 
-public class LandlordAgents implements Serializable
-{
-   private Integer id;
-   private Integer landlordId;
-   private Integer agentId;
-   private short accepted;
-   private String token;
-   private Integer inviteNumber;
-   private short canCreateProperty;
-   private short createPropertyRequest;
-   private Date dateCreated;
-   private Date dateUpdated;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
+    private Integer landlordId;
+    private Integer agentId;
+    private short accepted;
+    private String token;
+    private Integer inviteNumber;
+    private short canCreateProperty;
+    private short createPropertyRequest;
+    private Date dateCreated;
+    private Date dateUpdated;
 
     public LandlordAgents() {
     }
@@ -126,5 +139,5 @@ public class LandlordAgents implements Serializable
     public String toString() {
         return "LandlordAgents{" + "id=" + id + ", landlordId=" + landlordId + ", agentId=" + agentId + ", accepted=" + accepted + ", token=" + token + ", inviteNumber=" + inviteNumber + ", canCreateProperty=" + canCreateProperty + ", createPropertyRequest=" + createPropertyRequest + ", dateCreated=" + dateCreated + ", dateUpdated=" + dateUpdated + '}';
     }
-   
+
 }
