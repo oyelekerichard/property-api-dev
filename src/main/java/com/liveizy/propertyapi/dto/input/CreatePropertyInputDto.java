@@ -1,25 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.liveizy.propertyapi.models;
+package com.liveizy.propertyapi.dto.input;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
 
-/**
- *
- * @author richard.oyeleke
- */
 @Getter
 @Setter
-@Document
-public class Properties extends GenericDocument
-{
+public class CreatePropertyInputDto {
+
     @NotNull
     private String title;
     private String propertyType;
@@ -38,11 +27,4 @@ public class Properties extends GenericDocument
     private Integer agentId;
     private Integer estateId;
     private Integer landlordId;
-    private String agentVerify;
-    private String adminVerify;
-    private boolean regComplete;
-    private Integer userinchargeId;
-    private String userInChargeAs;
-
-
 }
