@@ -30,5 +30,9 @@ public class BaseService {
         return UUID.randomUUID().toString();
     }
 
+    protected String getUserId(){
+        return "thisUser";
+    }
+
 
 }
