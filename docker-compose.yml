@@ -1,0 +1,25 @@
+version: "2.1"
+services:
+  mongodb:
+    image: mongo:latest
+    restart: always
+    container_name: mongodb
+    environment:
+      - MONGO_DATA_DIR=/data/db
+    volumes:
+      - "/data/mongo/:/data/db"
+      - "/tmp:/tmp"
+    networks:
+      - liveizy_network
+  propertyapi:
+    build: .
+    restart: always
+    container_name: propertyapi
+    entrypoint: "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
+    networks:
+      - liveizy_network
+    mem_limit: 400m
+networks:
+  liveizy_network:
+    external: true
+
