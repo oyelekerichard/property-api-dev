@@ -1,12 +1,8 @@
-FROM alpine:edge
+FROM openjdk:14-alpine
 
 # install bash
 RUN \
   apk add --no-cache bash
-
-# install java
-RUN \
-  apk add --no-cache openjdk:14-jdk-alpine
 
 EXPOSE 8091
 
