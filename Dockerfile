@@ -6,7 +6,7 @@ RUN \
 
 # install java
 RUN \
-  apk add --no-cache openjdk14-alpine
+  apk add --no-cache openjdk14-jdk-alpine
 
 EXPOSE 8091
 
