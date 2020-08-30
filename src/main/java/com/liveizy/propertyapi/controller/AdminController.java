@@ -44,23 +44,23 @@ public class AdminController {
 
     @GetMapping("getProperty/{createdBy}")
     public StandardResponseDTO getProperty(@PathVariable("createdBy") @Valid String createdBy) {
-        return propertyService.getPropertyByCreatedBy(createdBy);
+        return propertyService.getPropertiesByCreator(createdBy);
     }
 
     @GetMapping("getAllProperties/{createdBy}")
     public StandardResponseDTO listAllProperties(@PathVariable("createdBy") @Valid String createdBy) {
-        return propertyService.getAllPropertiesByCreatedBy(createdBy);
+        return propertyService.getPropertiesByCreator(createdBy);
     }
 
     @PutMapping("updateProperty/{createdBy}")
-    public StandardResponseDTO updateProperty(@PathVariable("createdBy") @Valid String createdBy) {
-        return propertyService.updateProperty(createdBy);
+    public StandardResponseDTO updateProperty(@PathVariable("propertyId") @Valid String propertyId, Properties properties) {
+        return propertyService.updateProperty(propertyId, properties);
     }
-
-    @DeleteMapping("deleteProperty/{createdBy}")
-    public StandardResponseDTO deleteProperty(@PathVariable("createdBy") @Valid String createdBy) {
-        return propertyService.updateProperty(createdBy);
-    }
+//
+//    @DeleteMapping("deleteProperty/{createdBy}")
+//    public StandardResponseDTO deleteProperty(@PathVariable("createdBy") @Valid String createdBy) {
+//        return propertyService.updateProperty(createdBy);
+//    }
 
 //    @PostMapping("assignProperty/{alpmId}")
 //    public StandardResponseDTO assignProperty(@PathVariable("alpmId") @Valid String alpmId) {
