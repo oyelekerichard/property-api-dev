@@ -129,13 +129,9 @@ public class AdminController {
 //
 //- User can be able to see Update status of show of Interest application- Pending/Accepted/ Declined 
 //
-//- User can be able to delete inspection schedule created
+//  - User can be able to delete inspection schedule created
 //
 //user should be able to see the position of the property on the Map.
-//         */
-//        return propertyService.updateProperty(createdBy);
-//    }
-//
 //    @PostMapping("addProperty/{alpmId}/{propertyId}")
 //    public StandardResponseDTO addProperty(@PathVariable("alpmId") @Valid String alpmId) {
 //        /*
