@@ -32,15 +32,15 @@ public class ResponseLogAspect {
 
         StandardResponseDTO responseDTO = (StandardResponseDTO) returned;
         switch (responseDTO.getStatus()) {
-            case SUCCESS -> response.setStatus(HttpStatus.OK.value());
-            case CREATED -> response.setStatus(HttpStatus.CREATED.value());
-            case INTERNAL_ERROR -> response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-            case NOT_FOUND -> response.setStatus(HttpStatus.NOT_FOUND.value());
-            case NOT_PERMITTED -> response.setStatus(HttpStatus.FORBIDDEN.value());
-            case PRECONDITION_FAILED -> response.setStatus(HttpStatus.PRECONDITION_FAILED.value());
-            case PAYMENT_REQUIRED -> response.setStatus(HttpStatus.PAYMENT_REQUIRED.value());
-            case NO_RECORDS -> response.setStatus(HttpStatus.NO_CONTENT.value());
-            default -> response.setStatus(HttpStatus.BAD_REQUEST.value());
+            case SUCCESS: response.setStatus(HttpStatus.OK.value());
+            case CREATED : response.setStatus(HttpStatus.CREATED.value());
+            case INTERNAL_ERROR : response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+            case NOT_FOUND : response.setStatus(HttpStatus.NOT_FOUND.value());
+            case NOT_PERMITTED : response.setStatus(HttpStatus.FORBIDDEN.value());
+            case PRECONDITION_FAILED : response.setStatus(HttpStatus.PRECONDITION_FAILED.value());
+            case PAYMENT_REQUIRED : response.setStatus(HttpStatus.PAYMENT_REQUIRED.value());
+            case NO_RECORDS : response.setStatus(HttpStatus.NO_CONTENT.value());
+            default : response.setStatus(HttpStatus.BAD_REQUEST.value());
         }
 
         log.info("request to endpoint: " + request.getRequestURI());

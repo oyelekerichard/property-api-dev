@@ -5,11 +5,13 @@
  */
 package com.liveizy.propertyapi.models;
 
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
+import lombok.Data;
 
 /**
  *
@@ -18,20 +20,28 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @Document
+@Data
 public class Properties extends GenericDocument
 {
     @NotNull
-    private String title;
+    private String title;    
+    @NotNull
+    private String state;
+    @NotNull
+    private String lga;
+    @NotNull
+    private String street;
+    @NotNull
+    private String houseNumber;
+    @NotNull
+    private String addressLine2;
+    
+    private List<Images> image;
+    
+    private String country;
+    private Integer editedBy;
     private String propertyType;
     private String liveizyId;
-    private String country;
-    private String state;
-    private String lga;
-    private String street;
-    private String houseNumber;
-    private String addressLine2;
-    private String image;
-    private Integer editedBy;
     private String status;
     private boolean editRequest;
     private boolean lpmCanEdit;
@@ -43,6 +53,5 @@ public class Properties extends GenericDocument
     private boolean regComplete;
     private Integer userinchargeId;
     private String userInChargeAs;
-
-
+    
 }
