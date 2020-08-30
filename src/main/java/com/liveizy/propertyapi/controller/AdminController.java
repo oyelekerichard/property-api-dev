@@ -1,13 +1,10 @@
 package com.liveizy.propertyapi.controller;
 
 import com.liveizy.propertyapi.dto.input.CreatePropertyInputDto;
-import com.liveizy.propertyapi.dto.misc.ApiFieldError;
 import com.liveizy.propertyapi.dto.output.StandardResponseDTO;
 import com.liveizy.propertyapi.models.Properties;
 import com.liveizy.propertyapi.service.PropertyService;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 import javax.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import org.mapstruct.Context;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
