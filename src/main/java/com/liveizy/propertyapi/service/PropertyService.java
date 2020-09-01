@@ -55,9 +55,13 @@ public class PropertyService extends BaseService{
     public StandardResponseDTO updateProperty(String propertyId, Properties properties) 
     {
         Properties prop = propertyRepository.findByUuid(propertyId);
-        
-        
+               prop.setAddressLine2(properties.getAddressLine2());
+               prop.setAgentId(properties.getAgentId());
         return new StandardResponseDTO(Status.SUCCESS, this);
+    }
+
+    public StandardResponseDTO addApartmentToProperty(String propertyId, String apartmentId, Properties properties) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

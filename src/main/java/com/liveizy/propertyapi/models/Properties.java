@@ -12,6 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
 import lombok.Data;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 /**
  *
@@ -45,6 +46,7 @@ public class Properties extends GenericDocument
     private String status;
     private boolean editRequest;
     private boolean lpmCanEdit;
+    @DBRef
     private Integer agentId;
     private Integer estateId;
     private Integer landlordId;
@@ -53,5 +55,5 @@ public class Properties extends GenericDocument
     private boolean regComplete;
     private Integer userinchargeId;
     private String userInChargeAs;
-    
+    private List<Apartment> apartments;
 }

@@ -47,9 +47,14 @@ public class AdminController {
         return propertyService.getPropertiesByCreator(createdBy);
     }
 
-    @PutMapping("updateProperty/{createdBy}")
+    @PutMapping("updateProperty")
     public StandardResponseDTO updateProperty(@PathVariable("propertyId") @Valid String propertyId, Properties properties) {
         return propertyService.updateProperty(propertyId, properties);
+    }
+    
+    @PutMapping("addApartmentToProperty/{propertyId}/{apartmentId}")
+    public StandardResponseDTO addApartmentToProperty(@PathVariable("propertyId") @Valid String propertyId,@PathVariable("apartmentId") @Valid String apartmentId, Properties properties) {
+        return propertyService.addApartmentToProperty(propertyId,apartmentId, properties);
     }
 //
 //    @DeleteMapping("deleteProperty/{createdBy}")

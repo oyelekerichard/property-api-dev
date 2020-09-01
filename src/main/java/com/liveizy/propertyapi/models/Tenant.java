@@ -19,7 +19,7 @@ import lombok.Setter;
 @Setter
 public class Tenant {
     private String tenantId;
-    
+    private String liveizyId;
     private Integer userId;
     private Integer occupiers;
     private Integer maleOccupants;
