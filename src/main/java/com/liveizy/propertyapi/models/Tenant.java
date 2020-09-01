@@ -17,7 +17,8 @@ import lombok.Setter;
 @Data
 @Getter
 @Setter
-public class Tenant {
+public class Tenant 
+{
     private String tenantId;
     private String liveizyId;
     private Integer userId;

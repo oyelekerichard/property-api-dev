@@ -5,7 +5,7 @@
  */
 package com.liveizy.propertyapi.repository;
 
-import com.liveizy.propertyapi.models.Alpms;
+import com.liveizy.propertyapi.models.Apartment;
 import java.util.List;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
@@ -15,7 +15,9 @@ import org.springframework.stereotype.Repository;
  * @author richard.oyeleke
  */
 @Repository
-public interface AlpmRepository extends PagingAndSortingRepository<Alpms, String> {
-    Alpms findByAlpmId(String alpmId);
-    
+public interface ApartmentRepository extends PagingAndSortingRepository<Apartment, String>{
+    Apartment findByApartmentId(String apartmentId);
+    List<Apartment> findApartmentByPropetyId(String propertyId);
+    List<Apartment> findByTypeOfApartment(String typeOfApartment);
+    List<Apartment> findByAgentId(String agentId);
 }

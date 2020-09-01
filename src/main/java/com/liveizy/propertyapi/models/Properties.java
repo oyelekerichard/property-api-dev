@@ -53,7 +53,7 @@ public class Properties extends GenericDocument
     private String agentVerify;
     private String adminVerify;
     private boolean regComplete;
-    private Integer userinchargeId;
+    private Integer userInchargeId;
     private String userInChargeAs;
     private List<Apartment> apartments;
 }

@@ -19,6 +19,7 @@ import lombok.Setter;
 @Data
 public class Alpms 
 {
+    private Integer liveIzyId;
     private Integer agentId;
     private Integer alpmId;
     private Boolean isEnabled;

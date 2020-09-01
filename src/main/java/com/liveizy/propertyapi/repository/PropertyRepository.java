@@ -10,6 +10,7 @@ public interface PropertyRepository extends PagingAndSortingRepository<Propertie
 
     Properties findByUuid(String propertyId);
     List<Properties> findByCreatedBy(String createdBy);
-    
+    List<Properties> findByPropertyType(String propertyType);
+    Properties findPropertyByTitle(String title);
 //    List<Properties> findAllPropertiesByCreatedBy(String createdBy, Pageable pageable);
 }
