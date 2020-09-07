@@ -3,24 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.liveizy.propertyapi.models;
+package com.liveizy.propertyapi.dto.input;
 
 import java.util.Date;
+import javax.validation.constraints.NotNull;
 import lombok.Data;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  *
  * @author richard.oyeleke
  */
+@Getter
+@Setter
 @Data
-@Document
-public class Apartment 
-{
-    private String apartmentId;
-    private String propertyId;
+public class CreateApartmentInputDto {
     
+    @NotNull
+    private String apartmentId;
+    @NotNull
+    private String propertyId;
+    @NotNull
     private String typeOfApartment;
+    
+    @NotNull
     private String alpmId;
     private String[] images;
     private double rentValue;
@@ -36,10 +43,4 @@ public class Apartment
     private String numberOfSittingRooms;
     private String otherFeatures;
     
-    
-//    
-//    ,  status (Vacant/Occupied), rent payment date(Occupied- date,month), 
-//            rent payment plan (selectable-Annual, monthly, quarterly, bi-annual), Number of room, number bathroom, 
-//            number of toilet, number of room ensuite, Type of Metre (Prepaid, Analog, None),
-//            Floor finishing (Input box), Number of sitting-room, Add multiple apartment images 
 }

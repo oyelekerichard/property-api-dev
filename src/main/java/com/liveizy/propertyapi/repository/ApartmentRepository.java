@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ApartmentRepository extends PagingAndSortingRepository<Apartment, String>{
     Apartment findByApartmentId(String apartmentId);
-    List<Apartment> findApartmentByPropetyId(String propertyId);
+    List<Apartment> findApartmentByPropertyId(String propertyId);
     List<Apartment> findByTypeOfApartment(String typeOfApartment);
-    List<Apartment> findByAgentId(String agentId);
+    List<Apartment> findByAlpmId(String alpmId);
 }

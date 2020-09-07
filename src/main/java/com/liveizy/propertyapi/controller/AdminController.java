@@ -6,6 +6,10 @@ import com.liveizy.propertyapi.models.Properties;
 import com.liveizy.propertyapi.service.PropertyService;
 import io.swagger.annotations.Api;
 import javax.servlet.http.HttpServletRequest;
+import com.google.gson.Gson;
+import com.liveizy.propertyapi.dto.input.CreateApartmentInputDto;
+import com.liveizy.propertyapi.models.Apartment;
+import com.liveizy.propertyapi.service.ApartmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,10 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/v1/admin")
@@ -28,140 +33,58 @@ public class AdminController {
 
     @Autowired
     private HttpServletRequest request;
-    
+    private static final Gson gson = new Gson();
+    private static Logger logger = LoggerFactory.getLogger(AdminController.class);
+
     @Autowired
     private PropertyService propertyService;
+
+    @Autowired
+    private ApartmentService apartmentService;
 
     @PostMapping("property")
     public StandardResponseDTO createProperty(@RequestBody @Valid CreatePropertyInputDto createPropertyInputDto, HttpServletRequest request) {
         return propertyService.createProperty(createPropertyInputDto);
     }
 
-    @GetMapping("getProperty/{createdBy}")
-    public StandardResponseDTO getProperty(@PathVariable("createdBy") @Valid String createdBy) {
+//    @GetMapping("getProperty/{createdBy}")
+//    public StandardResponseDTO getProperty(@PathVariable("createdBy") @Valid String createdBy) {
+//        return propertyService.getPropertiesByCreator(createdBy);
+//    }
+
+    @GetMapping("property/getPropertiesByCreator/{createdBy}")
+    public StandardResponseDTO listAllPropertiesByCreator(@PathVariable("createdBy") @Valid String createdBy) {
         return propertyService.getPropertiesByCreator(createdBy);
     }
 
-    @GetMapping("getAllProperties/{createdBy}")
-    public StandardResponseDTO listAllProperties(@PathVariable("createdBy") @Valid String createdBy) {
-        return propertyService.getPropertiesByCreator(createdBy);
-    }
-
-    @PutMapping("updateProperty")
-    public StandardResponseDTO updateProperty(@PathVariable("propertyId") @Valid String propertyId, Properties properties) {
+    @PostMapping("property/updateProperty")
+    public StandardResponseDTO updateProperty(@PathVariable("propertyId") @Valid String propertyId, Properties properties , HttpServletRequest request) {
         return propertyService.updateProperty(propertyId, properties);
     }
     
-    @PutMapping("addApartmentToProperty/{propertyId}/{apartmentId}")
-    public StandardResponseDTO addApartmentToProperty(@PathVariable("propertyId") @Valid String propertyId,@PathVariable("apartmentId") @Valid String apartmentId, Properties properties) {
-        return propertyService.addApartmentToProperty(propertyId,apartmentId, properties);
+    @PostMapping("apartment")
+    public StandardResponseDTO createApartment(@RequestBody @Valid CreateApartmentInputDto createApartmentInputDto, HttpServletRequest request) {
+        return apartmentService.createApartment(createApartmentInputDto);
     }
-//
-//    @DeleteMapping("deleteProperty/{createdBy}")
-//    public StandardResponseDTO deleteProperty(@PathVariable("createdBy") @Valid String createdBy) {
-//        return propertyService.updateProperty(createdBy);
-//    }
-
-//    @PostMapping("assignProperty/{alpmId}")
-//    public StandardResponseDTO assignProperty(@PathVariable("alpmId") @Valid String alpmId) {
-//        /*
-//        Expose endpoint to assign ALPM to property. 
-//        the endpoint should accept the ID of the ALPM. 
-//        the endpoint should also accept two extra (optional) fields: - 
-//        can create property - can edit property
-//        */
-//        return propertyService.updateProperty(createdBy);
-//    }
-//
-//    @PostMapping("showInterestProperty/{alpmId}/{propertyId}")
-//    public StandardResponseDTO showInterestProperty(@PathVariable("alpmId") @Valid String alpmId) {
-//        /*
-//        When user click show interest, Pop-up form shows. 
-//        Users provide the following details: Profile Image, Full name,
-//        Date of Birthday, email, contact mobile number, state of origin, 
-//        previous apartments detail (rent value, property manager/owner details- name, 
-//        phone number), Address of previous apartment, Married or single, 
-//        Number of expected occupant, Emergency contact details- 
-//        (name, phone number, relationship). Work status (Business owner,Self-employed, Employee), 
-//        office/ Business Address, Monthly Salary 
-//
-//        Details can be editable by the user after submitting.
-//        */
-//        return propertyService.updateProperty(createdBy);
-//    }
-//    
-//    @PostMapping("updateshowInterestProperty/{alpmId}/{propertyId}")
-//    public StandardResponseDTO updateshowInterestProperty(@PathVariable("alpmId") @Valid String alpmId) {
-//        /*
-//        When user click show interest, Pop-up form shows. 
-//        Users provide the following details: Profile Image, Full name,
-//        Date of Birthday, email, contact mobile number, state of origin, 
-//        previous apartments detail (rent value, property manager/owner details- name, 
-//        phone number), Address of previous apartment, Married or single, 
-//        Number of expected occupant, Emergency contact details- 
-//        (name, phone number, relationship). Work status (Business owner,Self-employed, Employee), 
-//        office/ Business Address, Monthly Salary 
-//
-//        Details can be editable by the user after submitting.
-//        */
-//        return propertyService.updateProperty(createdBy);
-//    }
-//
-//
-//    @PostMapping("showInterestStatus/{alpmId}/{propertyId}")
-//    public StandardResponseDTO showInterestStatus(@PathVariable("alpmId") @Valid String alpmId) {
-//
-//        /*
-//        Accepted:
-//
-//            When user show of Interest is Accepted, User will receive alert and get the Tenancy Agreement (for apartment under subscription plan)
-//            User will receive alert to contact PO/PM to complete their process (out of platform)
-//        Accepted user can Pay rent from izyPay/izyInvest
-//        Declined:
-//
-//        User see update
-//        User can  delete apartment from list of show of interest 
-//         */
-//        return propertyService.updateProperty(createdBy);
-//    }
-//
-//    @PostMapping("scheduleInspectionProperty/{alpmId}/{propertyId}")
-//    public StandardResponseDTO scheduleInspectionProperty(@PathVariable("alpmId") @Valid String alpmId) {
-//        /*
-//        User will be able to schedule multiple apartment Inspection
-//
-//- User can reschedule Date and time selected based on available schedule available
-//
-//- User can be able to see Update status of show of Interest application- Pending/Accepted/ Declined 
-//
-//  - User can be able to delete inspection schedule created
-//
-//user should be able to see the position of the property on the Map.
-//    @PostMapping("addProperty/{alpmId}/{propertyId}")
-//    public StandardResponseDTO addProperty(@PathVariable("alpmId") @Valid String alpmId) {
-//        /*
-//        PM/PO can add multiple apartment to Property created
-//Each Apartment should generate unique id (11 digit strong)
-//Apartment should contain: rent value,  status (Vacant/Occupied), rent payment date(Occupied- date,month), rent payment plan (selectable-Annual, monthly, quarterly, bi-annual), Number of room, number bathroom, number of toilet, number of room ensuite, Type of Metre (Prepaid, Analog, None), Floor finishing (Input box), Number of sitting-room, Add multiple apartment images 
-//Other features (A description input box to list all other features)
-//Add other charges- title, amount, frequency (once, annually, monthly, quarterly, Bi-annually) . Add more charges
-//permission to advertise (vacant)- advertising apartment, all details is required
-//Apartment details can be editable after created
-//         */
-//        return propertyService.updateProperty(createdBy);
-//    }
-//    
-//    @PutMapping("referral/{createdBy}")
-//    public StandardResponseDTO referral(@PathVariable("createdBy") @Valid String createdBy) {
-//        return propertyService.updateProperty(createdBy);
-//    
-//    /*
-//    User is able to refer other users using Liveizy ID, Unique link or send an email invite
-//    Add referred to the referral's dashboard (show status: Active-when they verify email, Pending-when email is not verified)
-//    Show- referral balance, phone number of referred
-//    request- bank account details of user
-//    Generate referral commission as % of credit to izyPay
-//    Admin should be able to edit % commission value 
-//    */
-//    }
+    
+    @GetMapping("apartment/getApartment/{apartmentId}")
+    public StandardResponseDTO getApartment(@PathVariable("apartmentId") @Valid String apartmentId, HttpServletRequest request) {
+        return apartmentService.getApartment(apartmentId);
+    }
+    
+    @GetMapping("apartment/getPropertyApartments/{propertyId}")
+    public StandardResponseDTO getPropertyApartments(@PathVariable("propertyId") @Valid String propertyId, HttpServletRequest request) {
+        return apartmentService.getApartmentsByPropertyId(propertyId);
+    }
+    
+    @PostMapping("apartment/updateApartments/{apartmentId}")
+    public StandardResponseDTO updateApartments(@PathVariable("apartmentId") @Valid String apartmentId, Apartment apartment, HttpServletRequest request) {
+        return apartmentService.updateApartments(apartmentId, apartment);
+    }
+    
+    @PostMapping("apartment/addApartmentToProperty/{propertyId}/{apartmentId}")
+    public StandardResponseDTO addApartmentToProperty(@PathVariable("propertyId") @Valid String propertyId, @PathVariable("apartmentId") @Valid String apartmentId, HttpServletRequest request) {
+        return apartmentService.addApartmentToProperty(propertyId, apartmentId);
+    }
+//    findByPropertyType
 }

@@ -9,6 +9,7 @@ import java.util.Date;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  *
@@ -17,11 +18,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @Data
+@Document
 public class Alpms 
 {
-    private Integer liveIzyId;
-    private Integer agentId;
-    private Integer alpmId;
+    private int alpmId;
+    private int liveIzyId;
+//    private int agentId;
+    
     private Boolean isEnabled;
     private Date createdDate;
     private Date updatedDate;

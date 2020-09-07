@@ -17,5 +17,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AlpmRepository extends PagingAndSortingRepository<Alpms, String> {
     Alpms findByAlpmId(String alpmId);
-    
 }

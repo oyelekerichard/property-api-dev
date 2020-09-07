@@ -1,7 +1,5 @@
 package com.liveizy.propertyapi.dto.input;
 
-import com.liveizy.propertyapi.models.Images;
-import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,7 +17,7 @@ public class CreatePropertyInputDto {
     private String houseNumber;
     private String addressLine2;
     
-    private List<Images> image;
+    private String[] images;
     
     private Integer editedBy;
     private String country;

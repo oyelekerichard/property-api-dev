@@ -12,7 +12,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
 import lombok.Data;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 
 /**
  *
@@ -37,23 +36,23 @@ public class Properties extends GenericDocument
     @NotNull
     private String addressLine2;
     
-    private List<Images> image;
+    private String[] images;
     
     private String country;
-    private Integer editedBy;
+    private int editedBy;
     private String propertyType;
     private String liveizyId;
     private String status;
     private boolean editRequest;
     private boolean lpmCanEdit;
-    @DBRef
-    private Integer agentId;
-    private Integer estateId;
-    private Integer landlordId;
+
+    private int alpmId;
+    private int estateId;
+    private int landlordId;
     private String agentVerify;
     private String adminVerify;
     private boolean regComplete;
-    private Integer userInchargeId;
+    private int userInchargeId;
     private String userInChargeAs;
     private List<Apartment> apartments;
 }

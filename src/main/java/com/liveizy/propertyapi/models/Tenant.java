@@ -9,6 +9,7 @@ import java.util.Date;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  *
@@ -17,14 +18,15 @@ import lombok.Setter;
 @Data
 @Getter
 @Setter
+@Document
 public class Tenant 
 {
     private String tenantId;
     private String liveizyId;
-    private Integer userId;
-    private Integer occupiers;
-    private Integer maleOccupants;
-    private Integer femaleOccupants;
+    private int userId;
+    private int occupiers;
+    private int maleOccupants;
+    private int femaleOccupants;
     private String employmentStatus;
     private String employerName;
     private String employerAddress;
@@ -43,5 +45,4 @@ public class Tenant
     private String guestTenantRentAmount;
     private Date createTime;
     private Date updateTime;
-
 }
